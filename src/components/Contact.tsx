@@ -6,17 +6,71 @@ import { useState } from "react";
 
 export default function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        setTimeout(() => {
+        setSubmitStatus("idle");
+
+        const formData = new FormData(e.currentTarget);
+        const name = formData.get("name") as string;
+        const phone = formData.get("phone") as string;
+        const date = formData.get("date") as string;
+        const memo = formData.get("memo") as string;
+
+        // ==========================================
+        // 🚨 여기에 사용자님의 디스코드 웹훅 주소를 넣으시면 됩니다 🚨
+        // ==========================================
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1474438829044924478/UQ8emMUDLU3PU3joEUYH5Q4VU29dndn2KdTplVMqMZMx3AiKEplZffqCoTlkNKwbmli5";
+
+        const messageData = {
+            content: "🚨 **[감성도배] 새로운 온라인 상담 예약 접수** 🚨",
+            embeds: [
+                {
+                    title: "문의 내역 상세 보기",
+                    color: 0xFEE500, // 카카오톡 노란색 포인트 컬러
+                    fields: [
+                        { name: "👤 고객성함", value: name, inline: true },
+                        { name: "📞 연락처", value: phone, inline: true },
+                        { name: "📅 희망 시공일", value: date, inline: false },
+                        { name: "📝 문의/요청사항", value: memo || "없음", inline: false },
+                    ],
+                    timestamp: new Date().toISOString(),
+                }
+            ]
+        };
+
+        try {
+            if (!DISCORD_WEBHOOK_URL) {
+                // 웹훅 주소가 비어있을 땐 서버연동 전 테스트/가상 완료 처리
+                setTimeout(() => {
+                    setIsSubmitting(false);
+                    setSubmitStatus("success");
+                    setTimeout(() => setSubmitStatus("idle"), 5000);
+                }, 1000);
+                return;
+            }
+
+            const response = await fetch(DISCORD_WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(messageData),
+            });
+
+            if (response.ok) {
+                setSubmitStatus("success");
+                e.currentTarget.reset(); // 폼 초기화
+            } else {
+                setSubmitStatus("error");
+            }
+        } catch (error) {
+            console.error(error);
+            setSubmitStatus("error");
+        } finally {
             setIsSubmitting(false);
-            setIsSubmitted(true);
-            setTimeout(() => setIsSubmitted(false), 3000);
-        }, 1500);
+            setTimeout(() => setSubmitStatus("idle"), 5000);
+        }
     };
 
     return (
@@ -78,37 +132,39 @@ export default function Contact() {
                     <form onSubmit={handleSubmit} className="space-y-5">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-[#3E3A39]/80 mb-2">이름</label>
-                            <input type="text" id="name" required placeholder="홍길동"
+                            <input type="text" id="name" name="name" required placeholder="홍길동"
                                 className="w-full px-4 py-3 bg-white border border-[#E8DCC4] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8C7A6B]/50 transition-all text-[#3E3A39] placeholder:text-[#3E3A39]/30" />
                         </div>
 
                         <div>
                             <label htmlFor="phone" className="block text-sm font-medium text-[#3E3A39]/80 mb-2">연락처</label>
-                            <input type="tel" id="phone" required placeholder="010-0000-0000"
+                            <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678"
                                 className="w-full px-4 py-3 bg-white border border-[#E8DCC4] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8C7A6B]/50 transition-all text-[#3E3A39] placeholder:text-[#3E3A39]/30" />
                         </div>
 
                         <div>
                             <label htmlFor="date" className="block text-sm font-medium text-[#3E3A39]/80 mb-2">시공 희망일</label>
-                            <input type="date" id="date" required
+                            <input type="date" id="date" name="date" required
                                 className="w-full px-4 py-3 bg-white border border-[#E8DCC4] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8C7A6B]/50 transition-all text-[#3E3A39]" />
                         </div>
 
                         <div>
-                            <label htmlFor="memo" className="block text-sm font-medium text-[#3E3A39]/80 mb-2">문의 내용 (메모)</label>
-                            <textarea id="memo" rows={4} placeholder="시공 원하시는 평수나 공간의 특징, 원하시는 스타일 등을 적어주세요."
+                            <label htmlFor="memo" className="block text-sm font-medium text-[#3E3A39]/80 mb-2">문의 내용 (선택)</label>
+                            <textarea id="memo" name="memo" rows={4} placeholder="시공 원하시는 평수나 공간의 특징 등을 자유롭게 적어주세요."
                                 className="w-full px-4 py-3 bg-white border border-[#E8DCC4] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8C7A6B]/50 transition-all text-[#3E3A39] placeholder:text-[#3E3A39]/40 resize-none"></textarea>
                         </div>
 
                         <button
                             type="submit"
-                            disabled={isSubmitting || isSubmitted}
+                            disabled={isSubmitting || submitStatus === "success"}
                             className="w-full py-4 mt-4 bg-[#8C7A6B] text-white font-bold rounded-xl hover:bg-[#6b5c50] hover:shadow-lg transition-all disabled:bg-gray-400 flex items-center justify-center gap-2"
                         >
                             {isSubmitting ? (
                                 <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                            ) : isSubmitted ? (
-                                "상담 예약 완료"
+                            ) : submitStatus === "success" ? (
+                                "✅ 상담 예약 완료!"
+                            ) : submitStatus === "error" ? (
+                                "⚠️ 오류가 발생했습니다. 다시 시도해주세요."
                             ) : (
                                 "상담 예약하기"
                             )}
