@@ -1,0 +1,98 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useState } from "react";
+
+const portfolioItems = [
+    { id: 1, category: "아파트", title: "화이트&우드 웜톤 인테리어", size: "large", bg: "bg-gradient-to-br from-[#E8DCC4] to-[#F4EFE6]" },
+    { id: 2, category: "상업공간", title: "모던 미니멀 스튜디오", size: "small", bg: "bg-gradient-to-tr from-[#8C7A6B] to-[#D5C6B5]" },
+    { id: 3, category: "빌라", title: "따뜻한 크림베이지 거실", size: "medium", bg: "bg-gradient-to-bl from-[#FDFBF7] to-[#E8DCC4]" },
+    { id: 4, category: "오피스텔", title: "호텔식 럭셔리 질감 도배", size: "small", bg: "bg-gradient-to-br from-[#b6a08c] to-[#E8DCC4]" },
+    { id: 5, category: "단독주택", title: "자연 친화적 린넨 텍스처", size: "large", bg: "bg-gradient-to-t from-[#D5C6B5] to-[#FDFBF7]" },
+    { id: 6, category: "아파트", title: "파스텔 톤 아이방 시공", size: "medium", bg: "bg-gradient-to-tl from-[#F4EFE6] to-[#E8DCC4]" },
+];
+
+export default function Portfolio() {
+    const [activeFilter, setActiveFilter] = useState("전체");
+    const filters = ["전체", "아파트", "빌라", "상업공간", "오피스텔", "단독주택"];
+
+    const filteredItems = activeFilter === "전체"
+        ? portfolioItems
+        : portfolioItems.filter(item => item.category === activeFilter);
+
+    return (
+        <section id="portfolio" className="py-24 px-4 md:px-8 bg-[#F4EFE6] min-h-screen">
+            <div className="max-w-7xl mx-auto">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+                    <div>
+                        <motion.h2
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="text-4xl md:text-5xl font-bold text-[#3E3A39] mb-4"
+                        >
+                            시공 갤러리
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="text-[#3E3A39]/70"
+                        >
+                            감성도배가 완성한 아름다운 공간들을 확인해보세요.
+                        </motion.p>
+                    </div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="flex flex-wrap gap-2 mt-6 md:mt-0"
+                    >
+                        {filters.map((filter) => (
+                            <button
+                                key={filter}
+                                onClick={() => setActiveFilter(filter)}
+                                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === filter
+                                        ? "bg-[#8C7A6B] text-white shadow-md"
+                                        : "bg-white text-[#8C7A6B] hover:bg-[#E8DCC4]/50 border border-[#E8DCC4]"
+                                    }`}
+                            >
+                                {filter}
+                            </button>
+                        ))}
+                    </motion.div>
+                </div>
+
+                <motion.div
+                    layout
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]"
+                >
+                    {filteredItems.map((item) => (
+                        <motion.div
+                            layout
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            transition={{ duration: 0.3 }}
+                            key={item.id}
+                            className={`relative group rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-shadow ${item.size === "large" ? "md:row-span-2 lg:col-span-2" :
+                                    item.size === "medium" ? "row-span-2" : ""
+                                }`}
+                        >
+                            <div className={`w-full h-full ${item.bg} flex items-center justify-center p-8`}>
+                                <span className="text-[#3E3A39]/30 font-bold text-2xl tracking-widest uppercase rotate-[-45deg] select-none">IMAGE {item.id}</span>
+                            </div>
+
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                                <span className="text-[#E8DCC4] text-xs font-bold uppercase tracking-wider mb-2">{item.category}</span>
+                                <h3 className="text-white text-2xl font-bold">{item.title}</h3>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
+    );
+}
