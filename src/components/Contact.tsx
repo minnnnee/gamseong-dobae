@@ -50,17 +50,17 @@ export default function Contact() {
                             </div>
                             <div className="text-left">
                                 <p className="text-sm text-[#3E3A39]/60">빠른 전화 상담</p>
-                                <p className="text-xl font-bold text-[#3E3A39]">010-0000-0000</p>
+                                <p className="text-xl font-bold text-[#3E3A39]">010-3322-1992</p>
                             </div>
                         </div>
 
-                        <a href="#" className="flex items-center gap-4 bg-[#FEE500] px-6 py-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                        <a href="http://pf.kakao.com/_zHwMn" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#FEE500] px-6 py-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                             <div className="w-12 h-12 bg-black/10 rounded-full flex items-center justify-center text-[#3E3A39]">
                                 <Send size={24} />
                             </div>
                             <div className="text-left">
-                                <p className="text-sm text-[#3E3A39]/60">카카오톡 문의</p>
-                                <p className="text-lg font-bold text-[#3E3A39]">@감성도배</p>
+                                <p className="text-sm text-[#3E3A39]/60">카카오채널 문의</p>
+                                <p className="text-lg font-bold text-[#3E3A39]">감성도배</p>
                             </div>
                         </a>
                     </div>
