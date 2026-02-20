@@ -10,10 +10,14 @@ export default function Contact() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        // 캐싱: 비동기 처리 중 event 객체가 null로 변역될 수 있으므로 form을 미리 변수에 담아둡니다.
+        const formElement = e.currentTarget;
+
         setIsSubmitting(true);
         setSubmitStatus("idle");
 
-        const formData = new FormData(e.currentTarget);
+        const formData = new FormData(formElement);
         const name = formData.get("name") as string;
         const phone = formData.get("phone") as string;
         const date = formData.get("date") as string;
@@ -60,7 +64,7 @@ export default function Contact() {
 
             if (response.ok) {
                 setSubmitStatus("success");
-                e.currentTarget.reset(); // 폼 초기화
+                formElement.reset(); // 폼 초기화
             } else {
                 setSubmitStatus("error");
             }
