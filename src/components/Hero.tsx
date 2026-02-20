@@ -88,14 +88,10 @@ export default function Hero() {
                         transition={{ duration: 1.5, ease: "easeInOut" }}
                         className="absolute inset-0 w-full h-full"
                     >
-                        <Image
+                        <img
                             src={currentMood.image}
                             alt={currentMood.desc}
-                            fill
-                            className="object-cover"
-                            priority
-                            quality={100}
-                            unoptimized
+                            className="w-full h-full object-cover"
                         />
                     </motion.div>
                 </AnimatePresence>
