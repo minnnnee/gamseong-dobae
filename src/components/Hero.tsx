@@ -7,9 +7,9 @@ import Image from "next/image";
 const MOODS = [
     {
         id: 0,
-        image: "/hero_beige.png",
-        label: "미니멀 베이지",
-        desc: "따뜻하고 포근한 분위기",
+        image: "/begienew.jpg",
+        label: "미니멀 뉴 베이지",
+        desc: "따뜻하고 포근한 새로운 분위기",
     },
     {
         id: 1,
@@ -28,6 +28,12 @@ const MOODS = [
         image: "/brown.jpg",
         label: "클래식 우드 브라운",
         desc: "고급스럽고 중후한 느낌",
+    },
+    {
+        id: 4,
+        image: "/pink.jpg",
+        label: "로맨틱 소프트 핑크",
+        desc: "화사하고 사랑스러운 무드",
     }
 ];
 
