@@ -38,7 +38,15 @@ const portfolioItems = [
     { id: 31, category: "빌라", title: "", size: "large", image: "/villa6.jpeg" },
     { id: 32, category: "빌라", title: "", size: "small", image: "/villa7.jpeg" },
     { id: 33, category: "오피스텔", title: "호텔식 럭셔리 질감 도배", size: "small", bg: "bg-gradient-to-br from-[#b6a08c] to-[#E8DCC4]" },
-    { id: 34, category: "전원주택", title: "자연 친화적 린넨 텍스처", size: "large", bg: "bg-gradient-to-t from-[#D5C6B5] to-[#FDFBF7]" },
+    { id: 34, category: "전원주택", title: "", size: "medium", image: "/detached1.jpeg" },
+    { id: 35, category: "전원주택", title: "", size: "small", image: "/detached2.jpeg" },
+    { id: 36, category: "전원주택", title: "", size: "large", image: "/detached3.jpeg" },
+    { id: 37, category: "전원주택", title: "", size: "small", image: "/detached4.jpeg" },
+    { id: 38, category: "전원주택", title: "", size: "medium", image: "/detached5.jpeg" },
+    { id: 39, category: "전원주택", title: "", size: "large", image: "/detached6.jpeg" },
+    { id: 40, category: "전원주택", title: "", size: "small", image: "/detached7.jpeg" },
+    { id: 41, category: "전원주택", title: "", size: "medium", image: "/detached8.jpeg" },
+    { id: 42, category: "전원주택", title: "", size: "large", image: "/detached9.jpeg" },
 ];
 
 export default function Portfolio() {
