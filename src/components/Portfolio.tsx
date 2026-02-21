@@ -2,19 +2,31 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 const portfolioItems = [
-    { id: 1, category: "아파트", title: "화이트&우드 웜톤 인테리어", size: "large", bg: "bg-gradient-to-br from-[#E8DCC4] to-[#F4EFE6]" },
-    { id: 2, category: "상업공간", title: "모던 미니멀 스튜디오", size: "small", bg: "bg-gradient-to-tr from-[#8C7A6B] to-[#D5C6B5]" },
-    { id: 3, category: "빌라", title: "따뜻한 크림베이지 거실", size: "medium", bg: "bg-gradient-to-bl from-[#FDFBF7] to-[#E8DCC4]" },
-    { id: 4, category: "오피스텔", title: "호텔식 럭셔리 질감 도배", size: "small", bg: "bg-gradient-to-br from-[#b6a08c] to-[#E8DCC4]" },
-    { id: 5, category: "단독주택", title: "자연 친화적 린넨 텍스처", size: "large", bg: "bg-gradient-to-t from-[#D5C6B5] to-[#FDFBF7]" },
-    { id: 6, category: "아파트", title: "파스텔 톤 아이방 시공", size: "medium", bg: "bg-gradient-to-tl from-[#F4EFE6] to-[#E8DCC4]" },
+    { id: 1, category: "아파트", title: "화이트&우드 웜톤 인테리어", size: "large", image: "/apt1.jpeg" },
+    { id: 2, category: "아파트", title: "모던 미니멀 복도", size: "small", image: "/apt2.jpeg" },
+    { id: 3, category: "아파트", title: "고급 실크벽지 다이닝룸", size: "medium", image: "/apt3.jpeg" },
+    { id: 4, category: "아파트", title: "밝은 톤 거실 인테리어", size: "small", image: "/apt4.jpeg" },
+    { id: 5, category: "아파트", title: "포인트 벽지 시공", size: "large", image: "/apt5.jpeg" },
+    { id: 6, category: "아파트", title: "안방 아늑한 무드", size: "medium", image: "/apt6.jpeg" },
+    { id: 7, category: "아파트", title: "화사한 아이방 도배", size: "small", image: "/apt7.jpeg" },
+    { id: 8, category: "아파트", title: "깔끔한 화이트 톤", size: "medium", image: "/apt8.jpeg" },
+    { id: 9, category: "아파트", title: "프리미엄 질감 벽지", size: "large", image: "/apt9.jpeg" },
+    { id: 10, category: "아파트", title: "파스텔 톤 포인트 드레스룸", size: "small", image: "/apt10.jpeg" },
+    { id: 11, category: "아파트", title: "거실 확 트인 뷰", size: "medium", image: "/apt11.jpeg" },
+    { id: 12, category: "아파트", title: "차분한 웜그레이 톤 서재", size: "small", image: "/apt12.jpeg" },
+    { id: 13, category: "아파트", title: "침실 포근한 분위기", size: "large", image: "/apt13.jpeg" },
+    { id: 14, category: "상업공간", title: "모던 미니멀 스튜디오", size: "small", bg: "bg-gradient-to-tr from-[#8C7A6B] to-[#D5C6B5]" },
+    { id: 15, category: "빌라", title: "따뜻한 크림베이지 거실", size: "medium", bg: "bg-gradient-to-bl from-[#FDFBF7] to-[#E8DCC4]" },
+    { id: 16, category: "오피스텔", title: "호텔식 럭셔리 질감 도배", size: "small", bg: "bg-gradient-to-br from-[#b6a08c] to-[#E8DCC4]" },
+    { id: 17, category: "전원주택", title: "자연 친화적 린넨 텍스처", size: "large", bg: "bg-gradient-to-t from-[#D5C6B5] to-[#FDFBF7]" },
 ];
 
 export default function Portfolio() {
     const [activeFilter, setActiveFilter] = useState("전체");
-    const filters = ["전체", "아파트", "빌라", "상업공간", "오피스텔", "단독주택"];
+    const filters = ["전체", "아파트", "빌라", "상업공간", "오피스텔", "전원주택"];
 
     const filteredItems = activeFilter === "전체"
         ? portfolioItems
@@ -55,8 +67,8 @@ export default function Portfolio() {
                                 key={filter}
                                 onClick={() => setActiveFilter(filter)}
                                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === filter
-                                        ? "bg-[#8C7A6B] text-white shadow-md"
-                                        : "bg-white text-[#8C7A6B] hover:bg-[#E8DCC4]/50 border border-[#E8DCC4]"
+                                    ? "bg-[#8C7A6B] text-white shadow-md"
+                                    : "bg-white text-[#8C7A6B] hover:bg-[#E8DCC4]/50 border border-[#E8DCC4]"
                                     }`}
                             >
                                 {filter}
@@ -78,11 +90,15 @@ export default function Portfolio() {
                             transition={{ duration: 0.3 }}
                             key={item.id}
                             className={`relative group rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-shadow ${item.size === "large" ? "md:row-span-2 lg:col-span-2" :
-                                    item.size === "medium" ? "row-span-2" : ""
+                                item.size === "medium" ? "row-span-2" : ""
                                 }`}
                         >
-                            <div className={`w-full h-full ${item.bg} flex items-center justify-center p-8`}>
-                                <span className="text-[#3E3A39]/30 font-bold text-2xl tracking-widest uppercase rotate-[-45deg] select-none">IMAGE {item.id}</span>
+                            <div className={`w-full h-full ${item.bg || 'bg-[#E8DCC4]'} flex items-center justify-center relative overflow-hidden`}>
+                                {'image' in item && item.image ? (
+                                    <Image src={item.image} alt={item.title} fill className="object-cover" />
+                                ) : (
+                                    <span className="text-[#3E3A39]/30 font-bold text-2xl tracking-widest uppercase rotate-[-45deg] select-none p-8">IMAGE {item.id}</span>
+                                )}
                             </div>
 
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
