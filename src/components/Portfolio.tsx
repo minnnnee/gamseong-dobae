@@ -6,53 +6,65 @@ import Image from "next/image";
 
 const portfolioItems = [
     { id: 1, category: "아파트", title: "화이트&우드 웜톤 인테리어", size: "large", image: "/apt1.jpeg" },
-    { id: 2, category: "아파트", title: "모던 미니멀 복도", size: "small", image: "/apt2.jpeg" },
-    { id: 3, category: "아파트", title: "고급 실크벽지 다이닝룸", size: "medium", image: "/apt3.jpeg" },
-    { id: 4, category: "아파트", title: "밝은 톤 거실 인테리어", size: "small", image: "/apt4.jpeg" },
-    { id: 5, category: "아파트", title: "포인트 벽지 시공", size: "large", image: "/apt5.jpeg" },
-    { id: 6, category: "아파트", title: "안방 아늑한 무드", size: "medium", image: "/apt6.jpeg" },
-    { id: 7, category: "아파트", title: "화사한 아이방 도배", size: "small", image: "/apt7.jpeg" },
-    { id: 8, category: "아파트", title: "깔끔한 화이트 톤", size: "medium", image: "/apt8.jpeg" },
-    { id: 9, category: "아파트", title: "프리미엄 질감 벽지", size: "large", image: "/apt9.jpeg" },
-    { id: 10, category: "아파트", title: "파스텔 톤 포인트 드레스룸", size: "small", image: "/apt10.jpeg" },
-    { id: 11, category: "아파트", title: "거실 확 트인 뷰", size: "medium", image: "/apt11.jpeg" },
-    { id: 12, category: "아파트", title: "차분한 웜그레이 톤 서재", size: "small", image: "/apt12.jpeg" },
-    { id: 13, category: "아파트", title: "침실 포근한 분위기", size: "large", image: "/apt13.jpeg" },
     { id: 14, category: "상업공간", title: "", size: "medium", image: "/commercial1.jpeg" },
-    { id: 15, category: "상업공간", title: "", size: "small", image: "/commercial2.jpeg" },
-    { id: 16, category: "상업공간", title: "", size: "large", image: "/commercial3.jpeg" },
-    { id: 17, category: "상업공간", title: "", size: "small", image: "/commercial4.jpeg" },
-    { id: 18, category: "상업공간", title: "", size: "medium", image: "/commercial5.jpeg" },
-    { id: 19, category: "상업공간", title: "", size: "large", image: "/commercial6.jpeg" },
-    { id: 20, category: "상업공간", title: "", size: "small", image: "/commercial7.jpeg" },
-    { id: 21, category: "상업공간", title: "", size: "medium", image: "/commercial8.jpeg" },
-    { id: 22, category: "상업공간", title: "", size: "large", image: "/commercial9.jpeg" },
-    { id: 23, category: "상업공간", title: "", size: "small", image: "/commercial10.jpeg" },
-    { id: 24, category: "상업공간", title: "", size: "medium", image: "/commercial11.jpeg" },
-    { id: 25, category: "상업공간", title: "", size: "large", image: "/commercial12.jpeg" },
     { id: 26, category: "빌라", title: "", size: "medium", image: "/villa1.jpeg" },
-    { id: 27, category: "빌라", title: "", size: "small", image: "/villa2.jpeg" },
-    { id: 28, category: "빌라", title: "", size: "large", image: "/villa3.jpeg" },
-    { id: 29, category: "빌라", title: "", size: "small", image: "/villa4.jpeg" },
-    { id: 30, category: "빌라", title: "", size: "medium", image: "/villa5.jpeg" },
-    { id: 31, category: "빌라", title: "", size: "large", image: "/villa6.jpeg" },
-    { id: 32, category: "빌라", title: "", size: "small", image: "/villa7.jpeg" },
+    { id: 34, category: "단독주택", title: "", size: "large", image: "/detached1.jpeg" },
     { id: 33, category: "오피스텔", title: "호텔식 럭셔리 질감 도배", size: "small", bg: "bg-gradient-to-br from-[#b6a08c] to-[#E8DCC4]" },
-    { id: 34, category: "전원주택", title: "", size: "medium", image: "/detached1.jpeg" },
-    { id: 35, category: "전원주택", title: "", size: "small", image: "/detached2.jpeg" },
-    { id: 36, category: "전원주택", title: "", size: "large", image: "/detached3.jpeg" },
-    { id: 37, category: "전원주택", title: "", size: "small", image: "/detached4.jpeg" },
-    { id: 38, category: "전원주택", title: "", size: "medium", image: "/detached5.jpeg" },
-    { id: 39, category: "전원주택", title: "", size: "large", image: "/detached6.jpeg" },
-    { id: 40, category: "전원주택", title: "", size: "small", image: "/detached7.jpeg" },
-    { id: 41, category: "전원주택", title: "", size: "medium", image: "/detached8.jpeg" },
-    { id: 42, category: "전원주택", title: "", size: "large", image: "/detached9.jpeg" },
+
+    { id: 2, category: "아파트", title: "모던 미니멀 복도", size: "small", image: "/apt2.jpeg" },
+    { id: 15, category: "상업공간", title: "", size: "small", image: "/commercial2.jpeg" },
+    { id: 27, category: "빌라", title: "", size: "small", image: "/villa2.jpeg" },
+    { id: 35, category: "단독주택", title: "", size: "small", image: "/detached2.jpeg" },
+
+    { id: 3, category: "아파트", title: "고급 실크벽지 다이닝룸", size: "medium", image: "/apt3.jpeg" },
+    { id: 16, category: "상업공간", title: "", size: "large", image: "/commercial3.jpeg" },
+    { id: 28, category: "빌라", title: "", size: "large", image: "/villa3.jpeg" },
+    { id: 36, category: "단독주택", title: "", size: "large", image: "/detached3.jpeg" },
+
+    { id: 4, category: "아파트", title: "밝은 톤 거실 인테리어", size: "small", image: "/apt4.jpeg" },
+    { id: 17, category: "상업공간", title: "", size: "small", image: "/commercial4.jpeg" },
+    { id: 29, category: "빌라", title: "", size: "small", image: "/villa4.jpeg" },
+    { id: 37, category: "단독주택", title: "", size: "small", image: "/detached4.jpeg" },
+
+    { id: 5, category: "아파트", title: "포인트 벽지 시공", size: "large", image: "/apt5.jpeg" },
+    { id: 18, category: "상업공간", title: "", size: "medium", image: "/commercial5.jpeg" },
+    { id: 30, category: "빌라", title: "", size: "medium", image: "/villa5.jpeg" },
+    { id: 38, category: "단독주택", title: "", size: "medium", image: "/detached5.jpeg" },
+
+    { id: 6, category: "아파트", title: "안방 아늑한 무드", size: "medium", image: "/apt6.jpeg" },
+    { id: 19, category: "상업공간", title: "", size: "large", image: "/commercial6.jpeg" },
+    { id: 31, category: "빌라", title: "", size: "large", image: "/villa6.jpeg" },
+    { id: 39, category: "단독주택", title: "", size: "large", image: "/detached6.jpeg" },
+
+    { id: 7, category: "아파트", title: "화사한 아이방 도배", size: "small", image: "/apt7.jpeg" },
+    { id: 20, category: "상업공간", title: "", size: "small", image: "/commercial7.jpeg" },
+    { id: 32, category: "빌라", title: "", size: "small", image: "/villa7.jpeg" },
+    { id: 40, category: "단독주택", title: "", size: "small", image: "/detached7.jpeg" },
+
+    { id: 8, category: "아파트", title: "깔끔한 화이트 톤", size: "medium", image: "/apt8.jpeg" },
+    { id: 21, category: "상업공간", title: "", size: "medium", image: "/commercial8.jpeg" },
+    { id: 41, category: "단독주택", title: "", size: "medium", image: "/detached8.jpeg" },
+
+    { id: 9, category: "아파트", title: "프리미엄 질감 벽지", size: "large", image: "/apt9.jpeg" },
+    { id: 22, category: "상업공간", title: "", size: "large", image: "/commercial9.jpeg" },
+    { id: 42, category: "단독주택", title: "", size: "large", image: "/detached9.jpeg" },
+
+    { id: 10, category: "아파트", title: "파스텔 톤 포인트 드레스룸", size: "small", image: "/apt10.jpeg" },
+    { id: 23, category: "상업공간", title: "", size: "small", image: "/commercial10.jpeg" },
+
+    { id: 11, category: "아파트", title: "거실 확 트인 뷰", size: "medium", image: "/apt11.jpeg" },
+    { id: 24, category: "상업공간", title: "", size: "medium", image: "/commercial11.jpeg" },
+
+    { id: 12, category: "아파트", title: "차분한 웜그레이 톤 서재", size: "small", image: "/apt12.jpeg" },
+    { id: 25, category: "상업공간", title: "", size: "large", image: "/commercial12.jpeg" },
+
+    { id: 13, category: "아파트", title: "침실 포근한 분위기", size: "large", image: "/apt13.jpeg" },
 ];
 
 export default function Portfolio() {
     const [activeFilter, setActiveFilter] = useState("전체");
     const [visibleCount, setVisibleCount] = useState(9); // 초기에 보여질 개수
-    const filters = ["전체", "아파트", "빌라", "상업공간", "오피스텔", "전원주택"];
+    const filters = ["전체", "아파트", "빌라", "상업공간", "오피스텔", "단독주택"];
 
     const handleFilterClick = (filter: string) => {
         setActiveFilter(filter);
