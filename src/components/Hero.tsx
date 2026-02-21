@@ -16,6 +16,18 @@ const MOODS = [
         image: "/greenorange.jpg",
         label: "세련된 그린 오렌지",
         desc: "유니크하고 감각적인 분위기",
+    },
+    {
+        id: 2,
+        image: "/deepgray.jpg",
+        label: "모던 딥 그레이",
+        desc: "시크하고 도시적인 무드",
+    },
+    {
+        id: 3,
+        image: "/brown.jpg",
+        label: "클래식 우드 브라운",
+        desc: "고급스럽고 중후한 느낌",
     }
 ];
 
