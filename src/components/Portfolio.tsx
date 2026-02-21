@@ -26,11 +26,24 @@ const portfolioItems = [
 
 export default function Portfolio() {
     const [activeFilter, setActiveFilter] = useState("전체");
+    const [visibleCount, setVisibleCount] = useState(9); // 초기에 보여질 개수
     const filters = ["전체", "아파트", "빌라", "상업공간", "오피스텔", "전원주택"];
+
+    const handleFilterClick = (filter: string) => {
+        setActiveFilter(filter);
+        setVisibleCount(9); // 필터 변경 시 초기화
+    };
 
     const filteredItems = activeFilter === "전체"
         ? portfolioItems
         : portfolioItems.filter(item => item.category === activeFilter);
+
+    const displayedItems = filteredItems.slice(0, visibleCount);
+    const hasMore = visibleCount < filteredItems.length;
+
+    const handleLoadMore = () => {
+        setVisibleCount(prev => prev + 6); // 더보기 클릭 시 6개씩 추가
+    };
 
     return (
         <section id="portfolio" className="py-24 px-4 md:px-8 bg-[#F4EFE6] min-h-screen">
@@ -65,7 +78,7 @@ export default function Portfolio() {
                         {filters.map((filter) => (
                             <button
                                 key={filter}
-                                onClick={() => setActiveFilter(filter)}
+                                onClick={() => handleFilterClick(filter)}
                                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === filter
                                     ? "bg-[#8C7A6B] text-white shadow-md"
                                     : "bg-white text-[#8C7A6B] hover:bg-[#E8DCC4]/50 border border-[#E8DCC4]"
@@ -79,9 +92,9 @@ export default function Portfolio() {
 
                 <motion.div
                     layout
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px] grid-flow-row-dense"
                 >
-                    {filteredItems.map((item) => (
+                    {displayedItems.map((item) => (
                         <motion.div
                             layout
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -108,6 +121,22 @@ export default function Portfolio() {
                         </motion.div>
                     ))}
                 </motion.div>
+
+                {hasMore && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-16 flex justify-center"
+                    >
+                        <button
+                            onClick={handleLoadMore}
+                            className="px-8 py-3 bg-white border border-[#E8DCC4] text-[#8C7A6B] rounded-full font-medium shadow-sm hover:shadow-md hover:bg-[#FDFBF7] transition-all flex items-center gap-2"
+                        >
+                            <span>포트폴리오 더보기</span>
+                            <span className="textlg leading-none">+</span>
+                        </button>
+                    </motion.div>
+                )}
             </div>
         </section>
     );
