@@ -30,9 +30,15 @@ const portfolioItems = [
     { id: 23, category: "상업공간", title: "", size: "small", image: "/commercial10.jpeg" },
     { id: 24, category: "상업공간", title: "", size: "medium", image: "/commercial11.jpeg" },
     { id: 25, category: "상업공간", title: "", size: "large", image: "/commercial12.jpeg" },
-    { id: 26, category: "빌라", title: "따뜻한 크림베이지 거실", size: "medium", bg: "bg-gradient-to-bl from-[#FDFBF7] to-[#E8DCC4]" },
-    { id: 27, category: "오피스텔", title: "호텔식 럭셔리 질감 도배", size: "small", bg: "bg-gradient-to-br from-[#b6a08c] to-[#E8DCC4]" },
-    { id: 28, category: "전원주택", title: "자연 친화적 린넨 텍스처", size: "large", bg: "bg-gradient-to-t from-[#D5C6B5] to-[#FDFBF7]" },
+    { id: 26, category: "빌라", title: "", size: "medium", image: "/villa1.jpeg" },
+    { id: 27, category: "빌라", title: "", size: "small", image: "/villa2.jpeg" },
+    { id: 28, category: "빌라", title: "", size: "large", image: "/villa3.jpeg" },
+    { id: 29, category: "빌라", title: "", size: "small", image: "/villa4.jpeg" },
+    { id: 30, category: "빌라", title: "", size: "medium", image: "/villa5.jpeg" },
+    { id: 31, category: "빌라", title: "", size: "large", image: "/villa6.jpeg" },
+    { id: 32, category: "빌라", title: "", size: "small", image: "/villa7.jpeg" },
+    { id: 33, category: "오피스텔", title: "호텔식 럭셔리 질감 도배", size: "small", bg: "bg-gradient-to-br from-[#b6a08c] to-[#E8DCC4]" },
+    { id: 34, category: "전원주택", title: "자연 친화적 린넨 텍스처", size: "large", bg: "bg-gradient-to-t from-[#D5C6B5] to-[#FDFBF7]" },
 ];
 
 export default function Portfolio() {
