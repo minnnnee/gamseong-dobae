@@ -115,8 +115,7 @@ export default function Portfolio() {
                             </div>
 
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                                <span className="text-[#E8DCC4] text-xs font-bold uppercase tracking-wider mb-2">{item.category}</span>
-                                <h3 className="text-white text-2xl font-bold">{item.title}</h3>
+                                <span className="text-white text-2xl font-bold tracking-wider">{item.category}</span>
                             </div>
                         </motion.div>
                     ))}
