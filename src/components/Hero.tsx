@@ -13,9 +13,9 @@ const MOODS = [
     },
     {
         id: 1,
-        image: "/hero_green.jpeg",
-        label: "세련된 딥 그린",
-        desc: "차분하고 깊이감 있는 분위기",
+        image: "/greenorange.jpg",
+        label: "세련된 그린 오렌지",
+        desc: "유니크하고 감각적인 분위기",
     }
 ];
 
